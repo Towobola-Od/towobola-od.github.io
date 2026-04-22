@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Governance Part 2: The Connection Between AI and ESG | Towo Odukoya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a2634;
+      --gold: #c9a961;
+      --gold-light: #d9be81;
+      --cream: #faf9f7;
+      --cream-dark: #ede9e0;
+      --text: #1a2634;
+      --text-muted: #5a6570;
+      --text-light: #8a9199;
+      --border: #e8e6e3;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(250, 249, 247, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+    nav ul a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(184,150,78,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 1.2rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-meta {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: rgba(247,244,238,0.55);
+      text-transform: uppercase;
+    }
+    .hero-meta span {
+      margin: 0 0.6rem;
+      color: var(--gold);
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+    }
+
+
+
+    /* ── BODY COPY ── */
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 1.4rem;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+
+    /* ── SECTION HEADINGS ── */
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin: 3rem 0 1.2rem;
+      line-height: 1.25;
+      position: relative;
+      padding-bottom: 0.6rem;
+    }
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+    }
+    .section-heading.negative { color: #8b1a1a; }
+    .section-heading.negative::after { background: #8b1a1a; }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      border-left: 3px solid var(--gold);
+      background: var(--cream-dark);
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 2px 2px 0;
+    }
+    .callout p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--cream-dark);
+    }
+    .divider-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ── SOURCES ── */
+    .sources {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 2rem 2rem 2.2rem;
+      margin-top: 3.5rem;
+    }
+    .sources h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .sources ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sources li {
+      font-size: 0.8rem;
+      color: rgba(247,244,238,0.65);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .sources li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .sources a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+    .sources a:hover { text-decoration: underline; }
+
+    /* ── GLOSSARY ── */
+    .glossary {
+      border: 1px solid var(--cream-dark);
+      border-radius: 2px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 2.5rem;
+    }
+    .glossary h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      font-size: 0.8rem;
+    }
+    .glossary p {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.3rem;
+    }
+    .glossary strong { color: var(--navy); }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: rgba(247,244,238,0.4);
+    }
+    footer span { color: var(--gold); }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1, .hero-tag, .hero-meta { animation: fadeUp 0.7s ease both; }
+    .hero-tag { animation-delay: 0.1s; }
+    .hero h1  { animation-delay: 0.25s; }
+    .hero-meta{ animation-delay: 0.4s; }
+
+    @media (max-width: 600px) {
+      nav ul { gap: 1rem; }
+      nav ul a { font-size: 0.7rem; }
+      .page-wrap { padding: 2rem 1.2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">T. Odukoya</a>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#insights">Insights</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">AI in Governance · Part 2</div>
+    <h1>The Connection Between AI and ESG:<br><em>Balancing Innovation with Environmental Impact</em></h1>
+    <p class="hero-meta">Towo Odukoya <span>·</span> Corporate Governance &amp; Compliance <span>·</span> 2025</p>
+  </section>
+
+  <!-- BODY -->
+  <main class="page-wrap">
+
+    <a href="index.html#insights" class="back-link">
+      ← Back to Insights
+    </a>
+
+    <!-- Intro -->
+    <div class="prose">
+      <p>From attending corporate governance events and speaking with boardroom consultants I've found that most boards do not consider the relationship between AI and ESG, talk less of the importance of considering together on the board agenda.</p>
+
+      <p>Following this, it helps to define the scope. The Corporate Governance institute defines ESG as "the way in which an organisation manages its impacts on, risks related to, and opportunities arising from, environmental, social and governance issues." This post mainly focuses on the environmental dimension, which covers a firms direct environmental impact and indirect impact through its value chain, including suppliers, customer and investments.</p>
+
+      <p>Beyond the fact that both are emerging topics reshaping the commercial environment, one key reason why the relationship between the two is important to consider is because they are both prone to the same misrepresentation issue. ESG is prone to 'Greenwashing', which is where firms misrepresent their environmental commitments to look more sustainable than they are, and AI is prone to 'AI washing', which the CFA's policy institute defines as the practice of overstating or misrepresenting a firms use of AI in their financial services or products. (CFA, 2025)</p>
+
+      <p>Another reason why ESG and AI should be treated together is because in the face regulatory frameworks expanding to contain the two, by proactively analysing both, firms can demonstrate a more innovative, purposeful compliance beyond just ticking the boxes and truly drive ethical AI and Environmental sustainability goals. This is likely to reflect well on the firm, driving up positive stakeholder engagement from investors to employees and customers, given the fact that ESG is also a public priority (Pwc, 2021).</p>
+
+      <p>In this next portion I demonstrate how the relationship between AI and ESG manifests; how they harm and help the other. On the one hand, AI helps ESG performance by boosting innovation, but on the other hand, AI use impacts the environment in ways that contradict ESG objectives.</p>
+    </div>
+
+    <div class="divider"><div class="divider-dot"></div></div>
+
+    <!-- Positive relationship -->
+    <h2 class="section-heading">Positive Relationship: AI Boosts Innovation in ESG</h2>
+
+    <div class="prose">
+      <p>On the one hand, it can be observed that AI implementation helps with organisational ESG performance. Organisations like the chartered institute for IT champion AI as an innovative force for environmental sustainability.  In financial services, this looks like solving the issue of complex ESG reporting. At present, firms encounter a lack of uniformity across reporting frameworks (Fintech Global,2025). For example, needing to produce separate disclosures under the SFDR and TCFD simultaneously can produce fragmented data that may be difficult to put to strategic use.</p>
+
+      <p>The analytical power of AI solves this problem by mapping and consolidating otherwise scattered data (across emails, reports, questionaries) needed for differing frameworks, processing it to make it usable for both audit and strategy and consequently enabling better compliance practice across jurisdictions. (Fintech Global, 2025). In addition to reporting harmonisation, sustainability research reveals that through advanced analytics of ESG data, firms gain competitive advantage in the ESG field by being able to evaluate broad environmental metrics more quickly and accurately to inform investment decisions (sustainability research, 2026). For example, Destuche bank makes use of this technology and cuts down proposals from 4 hours work time to just 20 minutes (ICEAW, 2024).</p>
+    </div>
+
+    <div class="divider"><div class="divider-dot"></div></div>
+
+    <!-- Negative relationship -->
+    <h2 class="section-heading negative">Negative relationship – AI processing power generates huge environmental impact</h2>
+
+    <div class="prose">
+      <p>On the other hand, AI use can have adverse effects on ESG, undermining a firm's ability to demonstrate environmental sustainability commitments. This is because AI processing utilises large amounts of natural resources, i.e., water, and generates a significant environmental impact. Brookings, a US-based policy research centre, reports that data centres in the US, home to global tech companies such as Meta, use water equivalent to the needs of 100,000 households (Brookings, 2025). In addition, in reference to energy, the International Energy Association notes that data centres make up 20% of the usage on Ireland's power grid. The issue with these statistics is that by adopting AI, an organisation risks driving up emissions, directly conflicting with the environmental targets firms are required to report against, such as EU net-zero targets.</p>
+
+      <p>A topical example can be drawn from the case of Meta, a popular supplier of AI tech such as Copilot. Last year, they announced that they can no longer meet their climate action targets due to the environmental impact of this technology (Bloomberg,2025). Despite this, firms indeed buy ready-made LLM packages and so it may be argued that as a supplier, the ESG risk is entirely up to Microsoft. I would disagree here since ESG risk covers indirect/ supplier risk as referenced earlier. Oxford University for example, another LLM user, has acknowledged that its AI usage materially affects their ESG strategy and reputational standing (Oxford, 2025). Thus, buying the tech does not distance a firm from the environmental risk it causes, and as such, the use of AI by firms directly contradicts their ESG goals.</p>
+    </div>
+
+    <div class="divider"><div class="divider-dot"></div></div>
+
+    <!-- Significance -->
+    <h2 class="section-heading">Significance to the Board and Governance Professionals</h2>
+
+    <div class="prose">
+      <p>I believe that since the board sets the tone at the top, it is important that this issue is made relevant to the agenda. By connecting AI with ESG, I believe that it creates an opportunity for boards and firms to demonstrate a genuine, adaptive and forward-thinking response to sustainability matters beyond box ticking. On the other hand, the risk of not making the connection is that firms open themselves up to compounded misrepresentation risk of both AI and ESG, undermining their credibility in strategy while looking compliant on paper.</p>
+
+      <p>In addition, making the connection can be seen as an invitation to invest in solutions aligned with a firm's ESG strategy. For example, I have found that Small Language Models as opposed to Large Language models, provide lower energy usage where general queries are not necessary for daily operation (BCS, 2025). Another solution I've surfaced is the coordination of AI energy usage across providers and adapting the technology to renewable energy models. (IEA, 2025)</p>
+    </div>
+
+    <!-- Glossary -->
+    <div class="glossary">
+      <h3>Technical Terms &amp; Acronyms</h3>
+      <p><strong>SFDR</strong> — EU Sustainable Finance Disclosure Regulation</p>
+      <p><strong>TCFD</strong> — Task Force on Climate-related Financial Disclosures</p>
+      <p><strong>LLM</strong> — Large Language Model</p>
+      <p><strong>ESG</strong> — Environmental, Social and Governance</p>
+    </div>
+
+    <!-- Sources -->
+    <div class="sources">
+      <h3>Sources</h3>
+      <ul>
+        <li>BCS (2025) — <a href="https://www.bcs.org/articles-opinion-and-research/rethinking-ai-why-starting-smaller-might-be-smarter/" target="_blank">Rethinking AI: Why Starting Smaller Might Be Smarter</a></li>
+        <li>Bloomberg (2025) — Big Tech's Climate Strategists Feel Strain from Escalating AI Power Demands</li>
+        <li>Brookings Institution (2025) — <a href="https://www.brookings.edu/articles/ai-data-centers-and-water/" target="_blank">AI, Data Centres and Water</a></li>
+        <li>CFA Institute (2025) — <a href="https://rpc.cfainstitute.org/research/reports/2025/ai-washing" target="_blank">AI Washing</a></li>
+        <li>Corporate Governance Institute — <a href="https://www.thecorporategovernanceinstitute.com" target="_blank">ESG: Definition, Environmental Issues and Frameworks</a></li>
+        <li>Fintech Global (2024) — <a href="https://fintech.global/2024/06/13/how-generative-ai-transforms-esg-data-into-sustainable-investment-success/" target="_blank">How Generative AI Transforms ESG Data into Sustainable Investment Success</a></li>
+        <li>ICAEW (2024) — <a href="https://www.icaew.com/insights/viewpoints-on-the-news/2024/mar-2024/how-ai-is-blazing-a-trail-in-esg-reporting" target="_blank">How AI is Blazing a Trail in ESG Reporting</a></li>
+        <li>International Energy Agency (2025) — <a href="https://www.iea.org/reports/energy-and-ai/understanding-the-energy-ai-nexus" target="_blank">Energy and AI: Understanding the Energy-AI Nexus</a></li>
+        <li>McKinsey &amp; NielsenIQ — <a href="https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/consumers-care-about-sustainability-and-back-it-up-with-their-wallets" target="_blank">Consumers Care About Sustainability and Back it Up with Their Wallets</a></li>
+        <li>MDPI Sustainability Journal (2026) — <a href="https://www.mdpi.com/2071-1050/18/2/732" target="_blank">AI in ESG Strategy Implementation in the Banking Sector</a></li>
+        <li>Oxford University Digital Transformation Team (2025) — <a href="https://staff.admin.ox.ac.uk/article/generative-ai-and-the-environment-in-an-oxford-context" target="_blank">Generative AI and Carbon Emissions in the Oxford Context</a></li>
+        <li>PwC Consumer Intelligence Series — <a href="https://www.pwc.com/us/en/services/consulting/library/consumer-intelligence-series/consumer-and-employee-esg-expectations.html" target="_blank">Consumer and Employee ESG Expectations</a></li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2025 <span>Towo Odukoya</span> · All rights reserved
+  </footer>
+
+</body>
+</html>

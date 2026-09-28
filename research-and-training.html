@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research, Training &amp; Credentials | Towo Odukoya</title>
+  <meta name="description" content="Towo Odukoya's LLM dissertation on UK GDPR and AI regulation in financial services (Distinction), the AI training she designed and delivered, and her professional credentials." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2634;
+      --navy-2: #223246;
+      --cream: #faf9f7;
+      --cream-dark: #ede9e0;
+      --gold: #c9a961;
+      --gold-light: #d9be81;
+      --text: #1a2634;
+      --text-secondary: #5a6570;
+      --text-light: #8a9199;
+      --border: #e8e6e3;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(250, 249, 247, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100; padding: 1rem 0;
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); text-decoration: none; }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s ease; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero { background: var(--navy); color: var(--cream); padding: 9rem 2rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 30%, rgba(201,169,97,0.12) 0%, transparent 60%); pointer-events: none; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+    .eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); max-width: 850px; margin-bottom: 1.5rem; font-weight: 400; }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-lede { max-width: 640px; color: rgba(250,249,247,0.75); font-size: 1.1rem; margin-bottom: 3rem; }
+    .jump { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); max-width: 1000px; }
+    .jump a { display: block; background: var(--navy); padding: 1.5rem 1.75rem; text-decoration: none; transition: background 0.3s ease; }
+    .jump a:hover { background: var(--navy-2); }
+    .jump-num { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); font-size: 0.95rem; }
+    .jump-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--cream); margin: 0.2rem 0 0.35rem; }
+    .jump-desc { font-size: 0.85rem; color: rgba(250,249,247,0.6); }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+    .section-number { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); font-style: italic; }
+    .section-title { font-size: 2.2rem; color: var(--navy); }
+    .section-kicker { margin-left: auto; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); }
+
+    /* RESEARCH */
+    #research { background: var(--white); }
+    .research-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: start; }
+    .badge { display: inline-block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 0.3rem 0.75rem; margin-bottom: 1.25rem; font-weight: 500; }
+    .research-title { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--navy); margin-bottom: 0.75rem; }
+    .research-meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.75rem; }
+    .research-text p { color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .research-text strong { color: var(--navy); font-weight: 500; }
+    .why-list { list-style: none; margin: 2rem 0 2.5rem; display: grid; gap: 1rem; }
+    .why-list li { display: grid; grid-template-columns: 2.25rem 1fr; gap: 0.75rem; padding: 1.1rem 1.25rem; background: var(--cream); border-left: 2px solid var(--gold); }
+    .why-list .n { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); line-height: 1; }
+    .why-list h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 0.2rem; }
+    .why-list p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.95rem 1.75rem; background: var(--navy); color: var(--white); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s ease; border: 1px solid var(--navy); }
+    .btn:hover { background: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
+    .btn.ghost { background: transparent; color: var(--navy); }
+    .btn.ghost:hover { background: var(--navy); color: var(--white); }
+    .btn svg { width: 15px; height: 15px; }
+
+    /* Video card */
+    .video-card { position: sticky; top: 6rem; }
+    .video-frame { aspect-ratio: 16 / 9; background: var(--navy); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; color: var(--cream); }
+    .video-frame::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(201,169,97,0.25), transparent 55%), repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 14px); }
+    .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: 68px; height: 68px; border-radius: 50%; border: 1px solid var(--gold); display: grid; place-items: center; }
+    .play svg { width: 22px; height: 22px; color: var(--gold); margin-left: 4px; }
+    .video-frame .vt { position: relative; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; line-height: 1.2; }
+    .video-frame .vs { position: relative; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-top: 0.3rem; }
+    .video-caption { font-size: 0.85rem; color: var(--text-light); margin-top: 0.85rem; }
+    .fact-box { margin-top: 2rem; border: 1px solid var(--border); padding: 1.5rem; }
+    .fact-box h3 { font-size: 0.75rem; font-family: 'IBM Plex Sans', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 500; margin-bottom: 1rem; }
+    .fact-box dl { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 1.25rem; font-size: 0.9rem; }
+    .fact-box dt { color: var(--text-light); }
+    .fact-box dd { color: var(--navy); }
+
+    /* TRAINING */
+    #training { background: var(--cream); }
+    .training-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: start; }
+    .training-title { font-size: clamp(1.9rem, 3.2vw, 2.6rem); color: var(--navy); margin-bottom: 1.25rem; }
+    .training-text p { color: var(--text-secondary); margin-bottom: 1.25rem; }
+    .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0 2.5rem; }
+    .impact div { background: var(--white); border-top: 3px solid var(--gold); padding: 1.25rem; }
+    .impact .k { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--navy); line-height: 1.2; margin-bottom: 0.35rem; }
+    .impact .v { font-size: 0.82rem; color: var(--text-secondary); }
+    .deck { background: var(--white); border: 1px solid var(--border); }
+    .deck-slide { aspect-ratio: 16 / 9; background: var(--navy); color: var(--cream); padding: 2.25rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .deck-slide::after { content: ''; position: absolute; right: -60px; bottom: -60px; width: 240px; height: 240px; border: 1px solid rgba(201,169,97,0.35); border-radius: 50%; }
+    .deck-slide .ds-top { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .deck-slide .ds-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.15; max-width: 80%; }
+    .deck-slide .ds-foot { font-size: 0.8rem; color: rgba(250,249,247,0.6); }
+    .deck-body { padding: 1.5rem 1.75rem 1.75rem; }
+    .deck-body h3 { font-size: 0.75rem; font-family: 'IBM Plex Sans', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 500; margin-bottom: 0.9rem; }
+    .modules { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; margin-bottom: 1.5rem; }
+    .modules li { font-size: 0.9rem; color: var(--navy); padding-left: 1.1rem; position: relative; }
+    .modules li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 6px; height: 1px; background: var(--gold); }
+    .deck-note { font-size: 0.8rem; color: var(--text-light); margin-top: 1rem; }
+
+    /* CREDENTIALS */
+    #credentials { background: var(--white); }
+    .cred-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .cred { border: 1px solid var(--border); padding: 1.75rem; display: flex; flex-direction: column; background: var(--cream); transition: border-color 0.3s ease, transform 0.3s ease; }
+    .cred:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .cred.featured { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+    .cred.progress { border-style: dashed; background: transparent; }
+    .cred-type { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; font-weight: 500; }
+    .cred-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; line-height: 1.2; color: var(--navy); margin-bottom: 0.5rem; }
+    .cred.featured .cred-name { color: var(--cream); }
+    .cred-issuer { font-size: 0.88rem; color: var(--text-secondary); }
+    .cred.featured .cred-issuer { color: rgba(250,249,247,0.7); }
+    .cred-date { font-size: 0.8rem; color: var(--text-light); margin-top: 0.2rem; }
+    .cred-link { margin-top: auto; padding-top: 1.25rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; }
+    .cred.featured .cred-link { color: var(--gold-light); }
+    .cred-link.muted { color: var(--text-light); }
+    .cred-link svg { width: 13px; height: 13px; }
+
+    /* CTA */
+    .cta { background: var(--navy); color: var(--cream); text-align: center; padding: 5.5rem 2rem; }
+    .cta h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; font-weight: 400; }
+    .cta p { color: rgba(250,249,247,0.7); max-width: 560px; margin: 0 auto 2rem; }
+    .cta .btn { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+    .cta .btn:hover { background: var(--cream); border-color: var(--cream); }
+    .cta .btn.ghost { background: transparent; color: var(--cream); border-color: rgba(250,249,247,0.4); }
+    .cta .btn.ghost:hover { background: var(--cream); color: var(--navy); }
+    .cta .btn-row { justify-content: center; }
+
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.85rem; }
+
+    @media (max-width: 968px) {
+      .nav-links { display: none; }
+      .jump, .research-grid, .training-grid, .cred-grid { grid-template-columns: 1fr; }
+      .research-grid, .training-grid { gap: 3rem; }
+      .video-card { position: static; }
+      .impact { grid-template-columns: 1fr; }
+      .section-kicker { display: none; }
+      .modules { grid-template-columns: 1fr; }
+      section { padding: 4.5rem 1.25rem; }
+      .hero { padding: 7.5rem 1.25rem 4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">T. Odukoya</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#training">AI Training</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Research · Training · Credentials</p>
+      <h1>The work behind the CV: <em>data, AI and the rules that govern them.</em></h1>
+      <p class="hero-lede">Everything I'm usually asked about in interviews, in one place: my Distinction-graded dissertation on UK GDPR and AI regulation, the AI training I designed and delivered, and the qualifications behind both.</p>
+      <div class="jump">
+        <a href="#research">
+          <div class="jump-num">01</div>
+          <div class="jump-title">Dissertation</div>
+          <div class="jump-desc">UK GDPR &amp; AI regulation in financial services · Distinction</div>
+        </a>
+        <a href="#training">
+          <div class="jump-num">02</div>
+          <div class="jump-title">AI Training</div>
+          <div class="jump-desc">Designed and delivered in-house; shaped firm policy</div>
+        </a>
+        <a href="#credentials">
+          <div class="jump-num">03</div>
+          <div class="jump-title">Credentials</div>
+          <div class="jump-desc">LLM, CISI, Cripps LLP award and more</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="research">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <h2 class="section-title">Research</h2>
+          <span class="section-kicker">LLM Dissertation · Queen Mary University of London</span>
+        </div>
+        <div class="research-grid">
+          <div class="research-text">
+            <span class="badge">Distinction</span>
+            <h3 class="research-title">UK GDPR and AI Regulation in Financial Services</h3>
+            <p class="research-meta">LLM Regulation &amp; Compliance · Queen Mary University of London · 2025</p>
+            <p>Financial services firms are adopting AI faster than the rules around it are settling. Most UK firms already use it in some form. But every model that scores a customer, flags a transaction or answers a query runs on personal data, and the UK GDPR still applies to every one of those uses.</p>
+            <p>My dissertation looks at where those two worlds meet: <strong>what data protection law already demands of AI in financial services, where the gaps are, and what firms should do before a regulator or a customer asks.</strong></p>
+            <ul class="why-list">
+              <li>
+                <span class="n">i</span>
+                <div>
+                  <h3>AI risk is already regulated</h3>
+                  <p>The FCA hasn't written new AI rules. It relies on Consumer Duty, SM&amp;CR and data protection law, so firms need to understand the rules they already have.</p>
+                </div>
+              </li>
+              <li>
+                <span class="n">ii</span>
+                <div>
+                  <h3>Automated decisions need a human story</h3>
+                  <p>Credit, fraud and onboarding decisions made by models have to be explainable and open to challenge by the people they affect.</p>
+                </div>
+              </li>
+              <li>
+                <span class="n">iii</span>
+                <div>
+                  <h3>Governance is a competitive edge</h3>
+                  <p>Firms that can show how their AI uses data win the trust of customers, regulators and clients, and can grow faster because of it.</p>
+                </div>
+              </li>
+            </ul>
+            <div class="btn-row">
+              <a href="blog_4_dissertation.html" class="btn">Read the article
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+              <a href="mailto:odukoyatowobola@gmail.com?subject=Request%3A%20Dissertation%20on%20UK%20GDPR%20and%20AI%20Regulation" class="btn ghost">Request the full dissertation</a>
+            </div>
+          </div>
+
+          <aside class="video-card" aria-label="Dissertation video">
+            <!-- VIDEO: when recorded, replace .video-frame with an <iframe> (YouTube unlisted / Loom) or <video> tag -->
+            <div class="video-frame">
+              <div class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="vt">My dissertation in two minutes</div>
+              <div class="vs">Video · Coming October 2026</div>
+            </div>
+            <p class="video-caption">A short walkthrough of the question I asked, what I found, and why it matters for your firm.</p>
+            <div class="fact-box">
+              <h3>At a glance</h3>
+              <dl>
+                <dt>Degree</dt><dd>LLM Regulation &amp; Compliance (Merit)</dd>
+                <dt>Grade</dt><dd>Distinction (dissertation)</dd>
+                <dt>Law</dt><dd>UK GDPR, Data Protection Act 2018, FCA framework</dd>
+                <dt>Sector</dt><dd>Banking, payments, investments</dd>
+                <dt>Useful for</dt><dd>Compliance, DPO, risk and AI governance teams</dd>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="training">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2 class="section-title">AI Training</h2>
+          <span class="section-kicker">Designed &amp; delivered · 2026</span>
+        </div>
+        <div class="training-grid">
+          <div class="training-text">
+            <h3 class="training-title">Using AI safely in a regulated firm</h3>
+            <p>I designed and delivered AI training for colleagues at my firm. The aim was simple: help people get real value from AI tools without putting client data, confidentiality or the firm's regulatory position at risk.</p>
+            <p>The training influenced firm policy and sharpened our risk appetite, and I've since shared it with other firms. Tools don't create risk on their own; people's habits do. That's why training matters as much as the technology.</p>
+            <div class="impact">
+              <div><div class="k">Policy</div><div class="v">Informed the firm's approach to AI use</div></div>
+              <div><div class="k">Risk appetite</div><div class="v">Clearer lines on what is and isn't acceptable</div></div>
+              <div><div class="k">Shared</div><div class="v">Offered to other firms</div></div>
+            </div>
+            <div class="btn-row">
+              <a href="mailto:odukoyatowobola@gmail.com?subject=Request%3A%20AI%20training%20slides" class="btn">Request the slides</a>
+            </div>
+          </div>
+
+          <div class="deck">
+            <!-- SLIDES: when the PDF is uploaded as AI_Training_Slides.pdf, swap .deck-slide for:
+                 <iframe src="AI_Training_Slides.pdf" style="width:100%;aspect-ratio:16/9;border:0" title="AI training slides"></iframe> -->
+            <div class="deck-slide">
+              <div class="ds-top">Training deck</div>
+              <div class="ds-title">AI in practice: value, risk and good habits for regulated teams</div>
+              <div class="ds-foot">Towo Odukoya · 2026</div>
+            </div>
+            <div class="deck-body">
+              <h3>What it covers</h3>
+              <ul class="modules">
+                <li>What AI tools are, in plain English</li>
+                <li>Where they add real value day to day</li>
+                <li>What never goes into a prompt</li>
+                <li>Confidentiality and client data</li>
+                <li>Regulatory expectations (FCA, ICO)</li>
+                <li>Culture: judgement over shortcuts</li>
+              </ul>
+              <a href="mailto:odukoyatowobola@gmail.com?subject=Request%3A%20AI%20training%20slides" class="btn ghost">Ask about a session for your team</a>
+              <p class="deck-note">Slides shared on request, with confidential firm material removed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2 class="section-title">Credentials</h2>
+          <span class="section-kicker">Qualifications · Awards · Courses</span>
+        </div>
+        <div class="cred-grid">
+          <article class="cred featured">
+            <div class="cred-type">Postgraduate degree</div>
+            <h3 class="cred-name">LLM Regulation &amp; Compliance (Merit)</h3>
+            <div class="cred-issuer">Queen Mary University of London</div>
+            <div class="cred-date">2023 – 2025 · Dissertation with Distinction</div>
+            <a href="#research" class="cred-link">See the research →</a>
+          </article>
+          <article class="cred">
+            <div class="cred-type">Professional qualification</div>
+            <h3 class="cred-name">CISI Level 2 Award in Introduction to Securities &amp; Investments</h3>
+            <div class="cred-issuer">Chartered Institute for Securities &amp; Investment</div>
+            <div class="cred-date">2026</div>
+            <!-- CERT: add file e.g. certs/CISI_Level2.pdf and change to <a href="certs/CISI_Level2.pdf" target="_blank" rel="noopener" class="cred-link"> -->
+            <span class="cred-link muted">Certificate available on request</span>
+          </article>
+          <article class="cred">
+            <div class="cred-type">Award</div>
+            <h3 class="cred-name">Cripps LLP Solicitors Award</h3>
+            <div class="cred-issuer">Cripps LLP</div>
+            <div class="cred-date">2022 · Led to an internship invitation in 2023</div>
+            <span class="cred-link muted">Certificate available on request</span>
+          </article>
+          <article class="cred">
+            <div class="cred-type">Undergraduate degree</div>
+            <h3 class="cred-name">LLB Law (Hons), 2:1</h3>
+            <div class="cred-issuer">University of Brighton</div>
+            <div class="cred-date">2020 – 2023 · Data Privacy Law 77%</div>
+          </article>
+          <article class="cred">
+            <div class="cred-type">Job simulation</div>
+            <h3 class="cred-name">Financial Services Regulation</h3>
+            <div class="cred-issuer">Herbert Smith Freehills Kramer · Forage</div>
+            <div class="cred-date">September 2025</div>
+            <span class="cred-link muted">Certificate available on request</span>
+          </article>
+          <article class="cred">
+            <div class="cred-type">Certificate</div>
+            <h3 class="cred-name">Charity Accounting Certificate</h3>
+            <div class="cred-issuer">ICAEW</div>
+            <div class="cred-date">2024</div>
+            <span class="cred-link muted">Certificate available on request</span>
+          </article>
+          <article class="cred progress">
+            <div class="cred-type">In progress</div>
+            <h3 class="cred-name">ICA Compliance Qualification</h3>
+            <div class="cred-issuer">International Compliance Association</div>
+            <div class="cred-date">Currently studying</div>
+          </article>
+          <article class="cred progress">
+            <div class="cred-type">In progress</div>
+            <h3 class="cred-name">Financial Analysis</h3>
+            <div class="cred-issuer">Coursera</div>
+            <div class="cred-date">Currently studying</div>
+          </article>
+          <article class="cred">
+            <div class="cred-type">Full record</div>
+            <h3 class="cred-name">Curriculum Vitae</h3>
+            <div class="cred-issuer">Experience, education and skills</div>
+            <a href="Towo_Odukoya_CV.pdf" target="_blank" rel="noopener" class="cred-link">View my CV
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Want the dissertation, the slides or a conversation?</h2>
+      <p>I'm happy to share my research and training with recruiters, hiring teams and firms thinking about AI governance.</p>
+      <div class="btn-row">
+        <a href="mailto:odukoyatowobola@gmail.com" class="btn">Email me</a>
+        <a href="https://linkedin.com/in/towobolaodukoya" target="_blank" rel="noopener" class="btn ghost">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Towo Odukoya. All rights reserved.</p>
+  </footer>
+</body>
+</html>

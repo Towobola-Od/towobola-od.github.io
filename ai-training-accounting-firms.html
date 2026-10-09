@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Training for Accounting Firms | Towo Odukoya</title>
+  <meta name="description" content="A firm-agnostic staff training deck on using AI with confidence, care and compliance in UK accounting firms, by Towo Odukoya." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a2634;
+      --gold: #c9a961;
+      --gold-light: #d9be81;
+      --cream: #faf9f7;
+      --cream-dark: #ede9e0;
+      --text: #1a2634;
+      --text-muted: #5a6570;
+      --text-light: #8a9199;
+      --border: #e8e6e3;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(250, 249, 247, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+    nav ul a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(184,150,78,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 1.2rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-meta {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: rgba(247,244,238,0.55);
+      text-transform: uppercase;
+    }
+    .hero-meta span {
+      margin: 0 0.6rem;
+      color: var(--gold);
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+    }
+
+
+
+    /* ── BODY COPY ── */
+    .prose p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 1.4rem;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+
+    /* ── SECTION HEADINGS ── */
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin: 3rem 0 1.2rem;
+      line-height: 1.25;
+      position: relative;
+      padding-bottom: 0.6rem;
+    }
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+    }
+    .section-heading.negative { color: #8b1a1a; }
+    .section-heading.negative::after { background: #8b1a1a; }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      border-left: 3px solid var(--gold);
+      background: var(--cream-dark);
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 2px 2px 0;
+    }
+    .callout p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--cream-dark);
+    }
+    .divider-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ── SOURCES ── */
+    .sources {
+      background: var(--navy);
+      border-radius: 2px;
+      padding: 2rem 2rem 2.2rem;
+      margin-top: 3.5rem;
+    }
+    .sources h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .sources ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sources li {
+      font-size: 0.8rem;
+      color: rgba(247,244,238,0.65);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .sources li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .sources a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+    .sources a:hover { text-decoration: underline; }
+
+    /* ── GLOSSARY ── */
+    .glossary {
+      border: 1px solid var(--cream-dark);
+      border-radius: 2px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 2.5rem;
+    }
+    .glossary h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      font-size: 0.8rem;
+    }
+    .glossary p {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.3rem;
+    }
+    .glossary strong { color: var(--navy); }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: rgba(247,244,238,0.4);
+    }
+    footer span { color: var(--gold); }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1, .hero-tag, .hero-meta { animation: fadeUp 0.7s ease both; }
+    .hero-tag { animation-delay: 0.1s; }
+    .hero h1  { animation-delay: 0.25s; }
+    .hero-meta{ animation-delay: 0.4s; }
+
+    @media (max-width: 600px) {
+      nav ul { gap: 1rem; }
+      nav ul a { font-size: 0.7rem; }
+      .page-wrap { padding: 2rem 1.2rem 4rem; }
+    }
+
+    /* ── TRAINING PAGE ── */
+    .hero { padding-top: 7.5rem; }
+    .back-link { display:inline-block; font-size:0.8rem; letter-spacing:0.05em; color:var(--text-muted); text-decoration:none; margin-bottom:2rem; }
+    .back-link:hover { color: var(--gold); }
+    .deck-cover { display:block; width:100%; height:auto; border:1px solid var(--border); box-shadow:0 10px 30px rgba(26,38,52,0.10); margin:0 0 2rem; }
+    .btn-row { display:flex; flex-wrap:wrap; gap:0.8rem; margin:0 0 2.5rem; }
+    .btn { display:inline-block; padding:0.75rem 1.4rem; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; border:1px solid var(--navy); color:var(--navy); transition:all .25s ease; }
+    .btn.primary { background:var(--navy); color:var(--cream); }
+    .btn:hover { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+    .deck-viewer { width:100%; aspect-ratio:16/10; border:1px solid var(--border); background:var(--white); margin:1rem 0 0.6rem; }
+    .viewer-note { font-size:0.8rem; color:var(--text-light); }
+    .facts { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.5rem 0 0.5rem; }
+    .fact { background:var(--white); border:1px solid var(--border); padding:1.1rem 1.2rem; }
+    .fact-label { font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem; }
+    .fact-value { font-size:0.95rem; color:var(--navy); line-height:1.5; }
+    .prose ul { margin:0 0 1.4rem 1.2rem; }
+    .prose li { margin-bottom:0.45rem; line-height:1.7; }
+    @media (max-width: 600px) { .facts { grid-template-columns:1fr; } .deck-viewer { aspect-ratio:3/4; } }
+  </style>
+</head>
+<body>
+
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">T. Odukoya</a>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#credentials">Credentials</a></li>
+        <li><a href="index.html#insights">Insights</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Training · AI Governance</div>
+    <h1>AI Training for Accounting Firms:<br><em>Using AI with Confidence, Care and Compliance</em></h1>
+    <p class="hero-meta">Towo Odukoya <span>·</span> Staff Training Deck <span>·</span> 2026</p>
+  </section>
+
+  <!-- BODY -->
+  <main class="page-wrap">
+
+    <a href="index.html#credentials" class="back-link">← Back to Credentials</a>
+
+    <img class="deck-cover" src="assets/ai-training/cover.jpg" alt="Cover slide: AI Training for Accounting Firms, delivered by Towobola Odukoya" />
+
+    <div class="btn-row">
+      <a class="btn primary" href="assets/ai-training/AI-Training-for-Accounting-Firms-Towobola-Odukoya.pdf" target="_blank" rel="noopener">View the deck (PDF)</a>
+      <a class="btn" href="assets/ai-training/AI-Training-for-Accounting-Firms-Towobola-Odukoya.pptx" download>Download PowerPoint</a>
+    </div>
+
+    <div class="prose">
+      <p>I designed and delivered this AI training for staff at a UK accounting practice, and have rebuilt it here as a firm-agnostic version that any accounting firm can use. It is written for accountants, bookkeepers and client-facing staff, not technologists: plain language, practical examples, and a clear line on what should never go into an AI tool.</p>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="fact-label">Audience</div><div class="fact-value">Staff at UK accounting and bookkeeping firms</div></div>
+      <div class="fact"><div class="fact-label">Format</div><div class="fact-value">23-slide session with discussion and impact survey</div></div>
+      <div class="fact"><div class="fact-label">Focus</div><div class="fact-value">Governance, client data and regulatory risk</div></div>
+    </div>
+
+    <h2 class="section-heading">What It Covers</h2>
+    <div class="prose">
+      <ul>
+        <li>What AI is, and how generative AI differs from the automation firms already rely on</li>
+        <li>How accountants are using AI today, with practical examples for each use case</li>
+        <li>Personal data under UK GDPR, and how client data can be exposed at each stage of using an AI tool</li>
+        <li>The key risks: hallucinations, bias, confidentiality breaches, over-reliance and AML failures</li>
+        <li>Who regulates AI use in UK accountancy (ICO, professional bodies as AML supervisors, HMRC and the FCA) and what is at stake</li>
+        <li>Professional standards, drawing on the PCRT guidance on the ethical use of AI tools (January 2026)</li>
+        <li>A five-step approach to adopting AI safely, with a team discussion and a training impact survey</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <p>AI should be viewed as an assistant, not an authority. It amplifies what is already there: good or bad.</p>
+    </div>
+
+    <h2 class="section-heading">Preview the Deck</h2>
+    <object class="deck-viewer" data="assets/ai-training/AI-Training-for-Accounting-Firms-Towobola-Odukoya.pdf#view=FitH" type="application/pdf">
+      <p class="viewer-note" style="padding:1.5rem;">Your browser can't display the PDF here. <a href="assets/ai-training/AI-Training-for-Accounting-Firms-Towobola-Odukoya.pdf" target="_blank" rel="noopener">Open the deck in a new tab</a>.</p>
+    </object>
+    <p class="viewer-note">On mobile, use “View the deck (PDF)” above for the best experience.</p>
+
+    <h2 class="section-heading">Work With Me</h2>
+    <div class="prose">
+      <p>I'm happy to adapt and deliver this session for your team, or to talk about AI governance, data protection and AML compliance more broadly. <a href="index.html#contact" style="color:var(--navy);">Get in touch</a>.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 <span>Towo Odukoya</span> · All rights reserved
+  </footer>
+
+</body>
+</html>
